@@ -284,7 +284,7 @@ DELETE 方法：
 
 ![POST 请求](https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost/计算机网络/HTTP/13-Post请求.png)
 
-### GET 和 POST 方法都是安全和幂等的吗？
+### GET 和 POST 方法都是安全和幂等(Idempotent)的吗？
 
 先说明下安全和幂等的概念：
 
