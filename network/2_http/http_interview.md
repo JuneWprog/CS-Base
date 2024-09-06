@@ -423,6 +423,54 @@ HTTP 协议里的各类请求方法、URI/URL、状态码、头字段等每个�
 
 - HTTPS 就是在 HTTP 与 TCP 层之间增加了 SSL/TLS 安全传输层；
 - HTTP/1.1 和 HTTP/2.0 传输协议使用的是 TCP 协议，而到了 HTTP/3.0 传输协议改用了 UDP 协议。
+  
+HTTP/3  
+定义：HTTP/3 是 HTTP 协议的第三个主要版本，基于 QUIC 协议构建，旨在提高性能和安全性。
+
+传输协议：HTTP/3 使用 QUIC（Quick UDP Internet Connections）作为底层传输协议，QUIC 基于 UDP（用户数据报协议），而不是传统的 TCP（传输控制协议）。
+
+主要特点：
+
+- 多路复用：在同一个 QUIC 连接上支持多个 HTTP 请求和响应流，减少队头阻塞问题。
+
+- 内建加密：QUIC 协议内置了加密功能，使用 TLS 1.3 加密数据传输。
+
+- 更快的连接建立：QUIC 合并了加密和连接建立过程，减少延迟。
+  
+HTTPS
+
+- 定义：HTTPS（HyperText Transfer Protocol Secure）是 HTTP 的安全版本，它使用 TLS（Transport Layer Security）协议来加密 HTTP 通信。
+
+- 传输协议：HTTPS 通常基于 TCP 作为传输协议，使用 TLS 来加密 TCP 连接上的数据。
+
+主要特点：
+
+- 加密：HTTPS 通过 TLS 加密 HTTP 数据，保护数据的机密性和完整性。
+
+- 身份验证：通过证书机制验证服务器的身份，确保客户端连接的是合法服务器。
+
+- 数据完整性：确保数据在传输过程中未被篡改。
+
+** HTTP/3 与 HTTPS 的关系
+协议层级：
+
+HTTP/3 是传输协议层的更新，改进了数据传输性能和多路复用功能。
+
+HTTPS 是应用层的安全协议，负责加密 HTTP 通信。
+
+加密：
+
+HTTP/3 内建了加密功能，使用 TLS 1.3 集成在 QUIC 协议中，因此也可以被视为一种 HTTPS 协议（即 HTTP/3 over QUIC）。
+
+HTTPS 使用 TLS 协议加密 HTTP 流量，确保数据传输的安全性。
+
+传输协议：
+
+HTTP/3 使用 UDP 作为传输层的基础协议（通过 QUIC），与传统的 HTTP/1.1 和 HTTP/2 使用的 TCP 不同。
+
+HTTPS 基于 TCP 协议，在 TCP 之上加密 HTTP 流量。 
+
+
 
 *3. 应用广泛和跨平台*
 
