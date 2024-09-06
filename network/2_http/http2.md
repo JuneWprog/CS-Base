@@ -1,14 +1,21 @@
 # 3.6 HTTP/2 牛逼在哪？ 
 
+HTTP/2 和最大并发连接的区别：
+HTTP/1.1:
+每个HTTP请求通常需要一个独立的TCP连接。
+浏览器通常限制每个域名下的最大并发TCP连接数为 6个。这意味着对于同一个域名，如果需要加载多个资源，浏览器会同时发起6个TCP连接来下载不同的资源，超过的请求会排队等待。
+HTTP/2:
+多路复用（Multiplexing）：HTTP/2 可以在同一个TCP连接上同时发送多个请求和接收多个响应。这意味着，不再需要为每个请求建立新的TCP连接。
+即使有多个资源需要加载，浏览器可以在一个TCP连接上同时处理所有请求，大大减少了连接的建立时间和资源消耗。
+浏览器仍然可能限制最大并发连接数，但由于HTTP/2的多路复用特性，通常只需要一个TCP连接即可处理大量并发的请求。
+HTTP/2 的主要特性：
+单个TCP连接：一个TCP连接可以处理多个请求和响应。
+二进制分帧：HTTP/2 将数据以二进制帧的形式传输，代替了HTTP/1.1中的纯文本格式。
+多路复用：多个请求和响应可以同时在一个连接上传输，解决了HTTP/1.1中的“队头阻塞”（Head-of-Line Blocking）问题。
+优先级和流量控制：HTTP/2允许客户端为不同请求设置优先级，从而优化资源加载顺序。
+头部压缩：HTTP/2 使用了HPACK算法对HTTP头部进行压缩，减少了冗余信息的传输。
 
-不多 BB 了，直接发车！
 
-**一起来看看 HTTP/2 牛逼在哪？**
-
-
-![](https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost4@main/网络/http2/http2提纲.png)
-
----
 
 ## HTTP/1.1 协议的性能问题
 
@@ -290,18 +297,4 @@ HTTP/2 通过 Stream 的并发能力，解决了 HTTP/1 队头阻塞的问题，
 
 有没有什么解决方案呢？既然是 TCP 协议自身的问题，那干脆放弃 TCP 协议，转而使用 UDP 协议作为传输层协议，这个大胆的决定，HTTP/3 协议做了！
 
-![](https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost/计算机网络/HTTP/27-HTTP3.png)
 
----
-
-参考资料：
-
-1. https://developers.google.com/web/fundamentals/performance/http2
-2. https://http2.akamai.com/demo
-3. https://tools.ietf.org/html/rfc7541
-
----
-
-哈喽，我是小林，就爱图解计算机基础，如果文章对你有帮助，别忘记关注哦！
-
-![](https://cdn.xiaolincoding.com/gh/xiaolincoder/ImageHost2/%E5%85%B6%E4%BB%96/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BB%8B%E7%BB%8D.png)
